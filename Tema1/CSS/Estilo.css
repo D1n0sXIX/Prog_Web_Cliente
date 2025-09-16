@@ -1,0 +1,21 @@
+body{
+    font-family: Arial, sans-serif;
+    background-color: gray;
+}
+
+h1{
+    color: red;
+}
+
+p{
+    font-size: 16px;
+}
+
+/*Clase --> varios elementos*/
+.destacado{
+    background-color: yellow;
+}
+/*Clase --> elemento unico*/
+#importante{
+    font-weight: bold;
+}
