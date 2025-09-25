@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+
+<html lang="es">
+    <head>
+        <meta charset="UTF-8">
+        <meta name = "viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="AreaTriangulo.css">
+
+        <script type="text/javascript" src="AreaTriangulo.js"></script>
+
+        <title>Calculo del Area del triangulo</title>
+    
+    </head>
+
+    <body>
+       <h1>Calculo del Area del triangulo</h1>
+        <p id="titulos">Introduzca base y altura del triangulo</p>
+
+        <form id="calculos" method="post">
+            <label for="pregunta1">Base del triangulo: </label>
+            <input type="number" id="pregunta1" name="pregunta1" required>
+
+            <br>
+            <label for="pregunta2">Altura del triangulo: </label>
+            <input type="number" id="pregunta2" name="pregunta2" required>
+            <hr>
+            <button type="button" onclick="calcularArea()">Calcular Área</button>
+            <button type="button" onclick="borrarCampos()">Borrar</button>
+        <hr>
+
+        </form>
+        
+
+
+        <output id="resultado"></output>
+
+    </body>
+
+</html>

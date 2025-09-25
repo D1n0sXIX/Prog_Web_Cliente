@@ -1,0 +1,95 @@
+body{
+    font-family: Arial, sans-serif;
+    background-color: lightblue;
+}
+/* Estilo para centrar el título */
+h1 {
+    text-align: center; /* Centra el texto */
+    color: red; /* Color del texto */
+    font-size: 42px; /* Tamaño de la fuente */
+    font-weight: bold; /* Negrita */
+    margin-bottom: 20px; /* Espacio debajo del título */
+    text-transform: uppercase; /* Convierte el texto a mayúsculas */
+    font-family: 'Arial', sans-serif; /* Fuente moderna */
+}
+
+/* Estilo para el subtítulo */
+#titulos {
+    text-align: center; /* Centra el texto */
+    color: #555; /* Color más suave para el subtítulo */
+    font-size: 18px; /* Tamaño del subtítulo */
+    margin-bottom: 20px; /* Espacio debajo del subtítulo */
+    font-family: 'Arial', sans-serif; /* Fuente moderna */
+    font-weight: bold; /* Cursiva */
+}
+
+#calculos{
+    font-weight: bold;
+}
+
+button {
+    background-color: black; /* Color de fondo */
+    color: white; /* Color del texto */
+    border: none; /* Sin borde */
+    padding: 10px 20px; /* Espaciado interno */
+    text-align: center; /* Centra el texto */
+    text-decoration: none; /* Elimina subrayado */
+    display: inline-block;
+    font-size: 16px; /* Tamaño de la fuente */
+    margin: 4px 2px; /* Margen alrededor del botón */
+    cursor: pointer; /* Muestra un cursor de puntero */
+    border-radius: 8px; /* Bordes redondeados */
+    transition: background-color 0.3s ease; /* Transición suave */
+}
+
+
+form {
+    background-color: white;  /* Fondo claro para el formulario */
+    padding: 20px;  /* Espaciado interno */
+    border-radius: 10px;  /* Bordes redondeados */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);  /* Sombra para el formulario */
+    width: 300px;  /* Ancho del formulario */
+    margin: 20px auto;  /* Centrado horizontalmente */
+}
+
+/* Estilo para las etiquetas */
+label {
+    display: block;  /* Hacer que las etiquetas ocupen todo el ancho */
+    font-size: 14px;  /* Tamaño de la fuente */
+    font-weight: bold;
+    margin-bottom: 5px;  /* Espacio entre la etiqueta y el campo */
+    color: #333;  /* Color del texto */
+}
+
+/* Estilo para los campos de entrada */
+input[type="number"] {
+    width: 100%;  /* Ocupa todo el ancho del formulario */
+    padding: 10px;  /* Espaciado interno */
+    font-size: 14px;  /* Tamaño de la fuente */
+    margin-bottom: 15px;  /* Espacio debajo de cada campo */
+    border: 1px solid #ccc;  /* Borde suave */
+    border-radius: 5px;  /* Bordes redondeados */
+    box-sizing: border-box;  /* Incluye padding y border en el ancho total */
+}
+
+/* Estilo para el output */
+#resultado {
+    display: block;
+    margin-top: 20px;  /* Espacio superior */
+    padding: 10px;
+    font-size: 18px;
+    font-weight: bold;
+    color: #4CAF50;  /* Color del texto (verde) */
+    background-color: #f0f8ff;  /* Fondo suave (ligeramente azul) */
+    border: 2px solid black;  /* Borde verde */
+    border-radius: 8px;  /* Bordes redondeados */
+    text-align: center;  /* Centra el texto */
+    box-sizing: border-box;  /* Asegura que el padding no afecte el tamaño total */
+    transition: background-color 0.3s ease, color 0.3s ease;  /* Transición suave */
+}
+
+/* Efecto de hover para el output */
+#resultado:hover {
+    background-color: #e8f5e9;  /* Fondo ligeramente más oscuro al pasar el ratón */
+    color: #388e3c;  /* Texto en verde más oscuro */
+}
