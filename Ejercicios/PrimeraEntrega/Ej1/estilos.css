@@ -1,0 +1,43 @@
+/* Estilo para centrar el título <h1> */
+h1 {
+    text-align: center;
+    font-weight: bold;
+}
+
+/* Estilo para las tareas (alinear texto y botones) */
+.tarea {
+    margin-bottom: 10px;
+    display: flex; /* Usamos flexbox para alinear los elementos en una línea */
+    align-items: center; /* Alinea verticalmente los elementos (centra el texto con los botones) */
+}
+
+/* Cambiar el color del texto cuando se marca como completado */
+.completada {
+    color: green;
+    font-weight: bold;
+}
+
+/* Estilo para los botones */
+button {
+    margin-left: 10px;
+    padding: 5px 10px; /* Un poco de espacio interno para que los botones sean más grandes */
+}
+
+button.completar {
+    background-color: green;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+
+button.eliminar {
+    background-color: red;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+
+/* Efecto visual cuando el botón es presionado */
+button:hover {
+    opacity: 0.8;
+}
