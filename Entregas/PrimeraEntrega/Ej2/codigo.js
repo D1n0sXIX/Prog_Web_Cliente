@@ -1,9 +1,9 @@
 function descargarTareas() {
-    // Solicitud a la API
+    console.log("El boton funciona chachi pistachi")
     fetch("https://jsonplaceholder.typicode.com/todos")
         .then(respuesta => respuesta.json())  // Conveierto a formato JSON
         .then(datos => {
-            // Guardo los datos
+            // Guardo los datos del jason
             const contenidoJason = datos;
 
             // Limpio el contenedor (div) donde se almacenan los "datos"
@@ -23,6 +23,3 @@ function descargarTareas() {
             }
         })
 }
-
-// Añadir el evento al boton
-document.querySelector("button").addEventListener("click", descargarTareas);
