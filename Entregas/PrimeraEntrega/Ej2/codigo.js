@@ -1,25 +1,26 @@
 function descargarTareas() {
-    console.log("El boton funciona chachi pistachi")
+    console.log("El boton funciona chachi pistachi");
     fetch("https://jsonplaceholder.typicode.com/todos")
-        .then(respuesta => respuesta.json())  // Conveierto a formato JSON
+        .then(respuesta => respuesta.json())  // Convierto a formato JSON
         .then(datos => {
-            // Guardo los datos del jason
+            // Guardo los datos del JSON
             const contenidoJason = datos;
 
             // Limpio el contenedor (div) donde se almacenan los "datos"
             const contenedor = document.getElementById("tareas");
             contenedor.innerHTML = "";
 
-            // Podria hacer un for each pero como me piden solo los 10 primeros hago un for tradicional
-            for (let i = 0; i < 10; i++) {
-                
-                const tarea = contenidoJason[i];
-                // Creo un elemento HTML para almacenar tarea
-                const tareaElement = document.createElement("p");
-                tareaElement.textContent = tarea.title;  // Asignar el titulo
+            // Solo pide los 10 primeros, por lo que los seleccionamos y mapeamos
+            const primeros10 = contenidoJason.slice(0, 10)
+                .map(tarea => {
+                    const elemento = document.createElement("p");
+                    elemento.textContent = tarea.title;
+                    return elemento;
+                });
 
-                // Añado el nuevo elemento al contenedor
+            // Añadir los elementos al contenedor
+            primeros10.forEach(tareaElement => {
                 contenedor.appendChild(tareaElement);
-            }
+            });
         })
 }
