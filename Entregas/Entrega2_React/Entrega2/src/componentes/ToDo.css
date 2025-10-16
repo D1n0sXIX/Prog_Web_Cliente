@@ -1,0 +1,13 @@
+.contenedorMain {
+  background-color: white;
+  border-radius: 12px; /* Bordes redondeados */
+  padding: 20px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Sombra suave */
+  max-width: 400px;
+  margin: 20px auto; /* Centrado con margen */
+}
+
+h1 {
+  text-align: center;
+  color: #333;
+}

@@ -1,0 +1,11 @@
+.tres-botones{
+  display:flex;
+  gap:1rem;
+  align-items:center;
+  justify-content:center;
+  padding:1rem;
+}
+
+@media(max-width:480px){
+  .tres-botones{flex-direction:column}
+}
