@@ -1,11 +1,11 @@
 import React, { useState } from "react";
 import FormToDo from "./FormToDo.jsx";
 import ListToDo from "./ListToDo.jsx";
+import "./ToDo.css";
 
 export default function ToDo() {
-  const [tareas, setTareas] = useState([]); // Estado para las tareas
+  const [tareas, setTareas] = useState([]);
 
-  // Función para agregar tarea
   const agregarTarea = (nuevaTarea) => {
     setTareas([...tareas, nuevaTarea]);
   };

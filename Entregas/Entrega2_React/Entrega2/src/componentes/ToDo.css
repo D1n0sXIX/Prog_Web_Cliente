@@ -1,13 +1,92 @@
+/*HECHO CON CHATGPT*/
 .contenedorMain {
-  background-color: white;
-  border-radius: 12px; /* Bordes redondeados */
-  padding: 20px;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Sombra suave */
-  max-width: 400px;
-  margin: 20px auto; /* Centrado con margen */
+  background-color: #ffffff; /* Fondo blanco */
+  border-radius: 12px;
+  padding: 24px 32px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+  max-width: 450px;
+  margin: 40px auto;
+  font-family: "Poppins", system-ui, sans-serif;
 }
 
-h1 {
+.contenedorMain h1 {
   text-align: center;
-  color: #333;
+  color: #222;
+  font-size: 1.6rem;
+  margin-bottom: 20px;
+}
+
+/* Formulario */
+#formulario {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 20px;
+}
+
+#inputString {
+  flex: 1;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 1rem;
+}
+
+#boton {
+  background-color: #4caf50;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  padding: 10px 16px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+#boton:hover {
+  background-color: #43a047;
+}
+
+/* Lista de tareas */
+ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+li {
+  background-color: #f8f8f8;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  padding: 10px 12px;
+  margin-bottom: 8px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  transition: background-color 0.3s ease;
+}
+
+li:hover {
+  background-color: #f0f0f0;
+}
+
+li button {
+  background-color: #ff5252;
+  border: none;
+  color: white;
+  border-radius: 4px;
+  padding: 4px 8px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: background-color 0.2s;
+}
+
+li button:hover {
+  background-color: #e53935;
+}
+
+.hecho {
+  text-decoration: line-through;
+  color: gray;
+  opacity: 0.8;
 }
