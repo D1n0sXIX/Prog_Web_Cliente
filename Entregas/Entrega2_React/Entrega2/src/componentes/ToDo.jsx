@@ -12,7 +12,7 @@ export default function ToDo() {
 
   return (
     <div className="contenedorMain">
-      <h1>Lista de tareas</h1>
+      <h1>Mis tareas</h1>
       <FormToDo agregarTarea={agregarTarea} />
       <ListToDo tareas={tareas} />
     </div>
