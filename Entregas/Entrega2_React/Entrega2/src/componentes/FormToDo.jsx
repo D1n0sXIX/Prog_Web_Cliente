@@ -1,28 +1,24 @@
 import React, { useState } from "react";
-import ListToDo from "./ListToDo.jsx";
 
 export default function FormToDo({ agregarTarea }) {
-  const [tarea, setTarea] = useState("");
+  const [tarea, setTarea] = useState(""); // Estado del input
 
-  const cambio = (estado) => {
-    setTarea(estado.target.value);
+  // Función para manejar el cambio en el input
+  const actualizar = (evento) => {
+    setTarea(evento.target.value);
   };
 
-  const enviar = (evento) => {
-    evento.preventDefault();
-    if (tarea.trim()) {
-      agregarTarea(tarea); // Usamos la función para agregar tarea
-      setTarea(""); // Limpiamos el input
-    }
+  const addTarea = (evento) => {
+    evento.preventDefault(); // Prevenir la recarga de la página
+    agregarTarea(tarea); // Llamamos a la función para agregar la tarea
+    setTarea(""); // Limpiamos el input
   };
 
   return (
-    <div>
-      <form id="formulario" onSubmit={enviar}>
-        <label htmlFor="inputString"></label>
-        <input type="text" id="inputString" value={tarea} onChange={cambio} />
-        <button type="submit" id="boton">Añadir tarea</button>
-      </form>
-    </div>
+    <form id="formulario" onSubmit={addTarea}>
+      <label htmlFor="inputString"></label>
+      <input type="text" id="inputString" value={tarea} onChange={actualizar}/>
+      <button type="submit">Añadir tarea</button>
+    </form>
   );
 }

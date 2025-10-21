@@ -1,20 +1,14 @@
 import React from "react";
+import ToDo from "./ToDo"; // Importamos el componente ToDo
 
-export default function ListToDo({ tareas }) {
-  
-  const tacharTarea = (index) => {
-    const elemento = document.getElementById(`tarea-${index}`);
-    elemento.classList.toggle("hecho");
-  };
-
+export default function ListToDo({ tareas, eliminarTarea }) {
   return (
     <div>
       <ul>
         {tareas.map((tarea, index) => (
-          <li id={`tarea-${index}`} key={index}>
-            {tarea}
-            <button onClick={() => tacharTarea(index)}>Completar</button>
-          </li>
+          <ToDo key={index} index={index} tarea={tarea}
+            eliminarTarea={eliminarTarea} // Pasamos la funcin como parametro de entrada
+          />
         ))}
       </ul>
     </div>

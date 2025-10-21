@@ -3,40 +3,35 @@
   margin: 0 auto;
   padding: 2rem;
   text-align: center;
+  display: flex;
+  justify-content: center; /* Centrar el contenido */
+  align-items: center;
+  height: 100vh; /* Aseguramos que ocupe toda la pantalla */
+  background-color: #f4f4f4; /* Fondo suave */
 }
 
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.react:hover {
-  filter: drop-shadow(0 0 2em #61dafbaa);
+.main-container {
+  background-color: white;
+  border-radius: 16px; /* Bordes redondeados */
+  padding: 20px;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1); /* Sombra suave */
+  width: 100%;
+  max-width: 800px; /* Ancho máximo */
 }
 
-@keyframes logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.contenedorMain {
+  background-color: #ffffff;
+  border-radius: 12px;
+  padding: 24px 32px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+  max-width: 450px;
+  margin: 40px auto;
+  font-family: "Poppins", system-ui, sans-serif;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  a:nth-of-type(2) .logo {
-    animation: logo-spin infinite 20s linear;
-  }
-}
-
-.card {
-  padding: 2em;
-}
-
-.read-the-docs {
-  color: #888;
+h1 {
+  text-align: center;
+  color: #222;
+  font-size: 1.6rem;
+  margin-bottom: 20px;
 }

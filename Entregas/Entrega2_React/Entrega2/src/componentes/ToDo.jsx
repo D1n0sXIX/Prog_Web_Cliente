@@ -1,20 +1,22 @@
 import React, { useState } from "react";
-import FormToDo from "./FormToDo.jsx";
-import ListToDo from "./ListToDo.jsx";
-import "./ToDo.css";
 
-export default function ToDo() {
-  const [tareas, setTareas] = useState([]);
 
-  const agregarTarea = (nuevaTarea) => {
-    setTareas([...tareas, nuevaTarea]);
+export default function ToDo({ tarea, index, eliminarTarea }) {
+  const [tachada, setTachada] = useState(false); // Estado para saber si la tarea está tachada
+
+  const alternarTachado = () => {
+    setTachada(!tachada); // Alternar entre tachada y no tachada
+  };
+
+  const eliminar = () => {
+    eliminarTarea(index);
   };
 
   return (
-    <div className="contenedorMain">
-      <h1>Mis tareas</h1>
-      <FormToDo agregarTarea={agregarTarea} />
-      <ListToDo tareas={tareas} />
-    </div>
+    <li id={`tarea-${index}`} className={tachada ? "hecho" : ""}>
+      {tarea}
+      <button onClick={alternarTachado}>Hecha</button>
+      <button className="eliminar-button" onClick={eliminar}>Eliminar</button>
+    </li>
   );
 }
