@@ -1,0 +1,266 @@
+#root {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 2rem;
+  text-align: center;
+  /* Color base del texto (gris oscuro) */
+  color: var(--fitlife-gray);
+}
+
+:root {
+  /* Paleta inspirada en el logo: rojo carmesí oscuro y gris oscuro */
+  --fitlife-red: #7B1C1C;       /* rojo carmesí oscuro */
+  --fitlife-gray: #333333;     /* gris oscuro */
+  /* valores RGB para usar en rgba() */
+  --fitlife-red-rgb: 123,28,28;
+  --fitlife-gray-rgb: 51,51,51;
+}
+
+.logo {
+  height: 6em;
+  padding: 1.5em;
+  will-change: filter;
+  transition: filter 300ms;
+}
+.logo:hover {
+  /* sombra en rojo carmesí similar al logo */
+  filter: drop-shadow(0 0 2em rgba(var(--fitlife-red-rgb), 0.5));
+}
+.logo.react:hover {
+  /* versión suave en gris oscuro */
+  filter: drop-shadow(0 0 2em rgba(var(--fitlife-gray-rgb), 0.35));
+}
+
+@keyframes logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  a:nth-of-type(2) .logo {
+    animation: logo-spin infinite 20s linear;
+  }
+}
+
+.card {
+  padding: 2em;
+}
+
+.read-the-docs {
+  color: var(--fitlife-gray);
+}
+
+/* Estilos para el logo del sitio: centrado y tamaño limitado */
+.site-logo {
+  display: block;       /* hace que margin auto funcione */
+  max-width: 320px;     /* ancho máximo razonable */
+  width: 40%;           /* tamaño relativo en pantallas grandes */
+  height: auto;         /* mantiene la proporción */
+  margin: 1.5rem auto;  /* centra horizontalmente y da separación */
+}
+
+/* Contenedor principal del formulario */
+.Formalariobase {
+  background-color: #b4aeae; /* gris claro */
+  border-radius: 12px;       /* bordes redondeados */
+  padding: 1.5rem 2rem;      /* espacio interior */
+  max-width: 900px;
+  margin: 0.5rem auto;       /* centrar y separar */
+  box-shadow: 0 6px 18px rgba(var(--fitlife-gray-rgb), 0.06);
+  /* Tipografía específica para la sección (elegante y moderna) */
+  font-family: 'Montserrat', 'Poppins', system-ui, Avenir, Helvetica, Arial, sans-serif;
+  font-weight: 500;
+  color: var(--fitlife-gray);
+}
+
+/* Formularios dentro del contenedor: cuadrícula, fondo blanco y campos redondeados */
+.Formalariobase form {
+  background: #ffffff;
+  padding: 1rem;
+  border-radius: 10px;
+  box-shadow: 0 6px 18px rgba(var(--fitlife-gray-rgb), 0.04);
+  display: grid;
+  gap: 0.75rem;
+  /* Forzar una sola columna (layout lineal) en todas las pantallas */
+  grid-template-columns: 1fr;
+  align-items: start;
+}
+
+.Formalariobase label {
+  display: block;
+  margin-bottom: 0.35rem;
+  font-weight: 600;
+  color: var(--fitlife-gray);
+  /* Alinear texto a la derecha y subrayar */
+  text-align: left;
+}
+
+.Formalariobase input,
+.Formalariobase select,
+.Formalariobase textarea {
+  background: #ffffff;
+  border: 1px solid #e6e6e6;
+  border-radius: 8px;
+  padding: 0.6rem 0.75rem;
+  font: inherit;
+  color: var(--fitlife-gray);
+  box-sizing: border-box;
+}
+
+/* Estilos para el componente ToComplete */
+.to-complete {
+  display: flex;
+  flex-direction: column;
+}
+.to-complete label {
+  margin-bottom: 0.35rem;
+  font-weight: 600;
+  text-align: left;
+}
+.to-complete-input {
+  border: 1px solid #e6e6e6;
+  border-radius: 8px;
+  padding: 0.6rem 0.75rem;
+  transition: box-shadow 160ms ease, border-color 160ms ease, transform 120ms ease;
+}
+.to-complete .to-complete-input:focus {
+  border-color: var(--fitlife-red);
+  box-shadow: 0 4px 14px rgba(var(--fitlife-red-rgb), 0.08);
+  transform: translateY(-1px);
+}
+.to-complete.has-error .to-complete-input {
+  border-color: var(--fitlife-red);
+}
+.to-complete .error {
+  color: var(--fitlife-red);
+  margin-top: 0.25rem;
+  font-size: 0.9rem;
+}
+
+/* Preferencias: selects, checkbox-list y availability */
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+}
+.field select {
+  padding: 0.6rem 0.75rem;
+  border-radius: 8px;
+  border: 1px solid #e6e6e6;
+  background: #fff;
+}
+.checkbox-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem 1rem;
+}
+.checkbox-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-weight: 500;
+}
+.availability-grid {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 0.5rem;
+}
+.day-toggle {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.5rem 0.25rem;
+  border-radius: 8px;
+  border: 1px solid #e6e6e6;
+  cursor: pointer;
+  user-select: none;
+  background: #fff;
+}
+.day-toggle input {
+  display: none; /* ocultamos el checkbox nativo */
+}
+.day-toggle input:checked + span {
+  background: var(--fitlife-red);
+  color: #fff;
+  padding: 0.25rem 0.5rem;
+  border-radius: 6px;
+}
+.day-toggle span {
+  display: inline-block;
+  width: 100%;
+  text-align: center;
+}
+
+.muted {
+  color: #666;
+  font-size: 0.95rem;
+}
+
+.Formalariobase input:focus,
+.Formalariobase select:focus,
+.Formalariobase textarea:focus {
+  outline: none;
+  border-color: var(--fitlife-red);
+  box-shadow: 0 0 0 4px rgba(var(--fitlife-red-rgb), 0.08);
+}
+
+/* Botones dentro del formulario */
+.Formalariobase .boton-primary,
+.Formalariobase button[type="submit"] {
+  background-color: var(--fitlife-red);
+  color: #fff;
+  border: none;
+  padding: 0.65rem 1rem;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+/* Acciones del formulario (botones) */
+.form-actions {
+  margin-top: 1rem;
+  display: flex;
+  gap: 0.5rem;
+  justify-content: center; /* centrar botones */
+  grid-column: 1 / -1; /* colocar el contenedor al final y que ocupe toda la fila del grid */
+}
+
+/* Ajustes responsive: menos padding en móvil */
+@media (max-width: 480px) {
+  .Formalariobase {
+    padding: 1rem;
+  }
+  .Formalariobase form {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Estilo para mensajes de error en formularios */
+.Formalariobase .error {
+  color: var(--fitlife-red);
+  margin-top: 0.25rem;
+  font-size: 0.9rem;
+}
+
+/* Encabezados y elementos destacados con color del logo */
+h1 {
+  color: var(--fitlife-red);
+}
+
+/* Links o botones principales pueden usar el rojo */
+a.primary, .btn-primary {
+  background-color: var(--fitlife-red);
+  color: #fff;
+}
+
+/* Estilo global para secciones: fondo gris claro y bordes redondeados */
+section {
+  background: #f6f6f6; /* gris clarito */
+  border-radius: 10px;
+  padding: 0.75rem;
+  margin-bottom: 0.75rem; /* separación entre secciones */
+  border: 1px solid rgba(var(--fitlife-gray-rgb), 0.06);
+}
