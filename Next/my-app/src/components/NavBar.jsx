@@ -8,6 +8,7 @@ export default function NavBar() {
             <Link href="/">Home</Link> |{' '}
             <Link href="/about">About</Link> |{' '}
             <Link href="/contact/book">Book</Link>
+            <Link href="/posts"> | Posts</Link>
         </nav>
 
     )

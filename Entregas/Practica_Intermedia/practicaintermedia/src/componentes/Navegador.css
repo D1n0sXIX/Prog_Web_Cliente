@@ -1,0 +1,71 @@
+.navegador {
+  display: flex;
+  justify-content: center;
+  margin: 2rem 0;
+}
+
+.formulario {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: flex-end;
+  padding: 1.5rem;
+  background-color: #f8f9fa;
+  border-radius: 8px;
+  border: 1px solid #dee2e6;
+}
+
+.div-busqueda {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.campo-busqueda label {
+  font-weight: 600;
+  font-size: 0.9rem;
+  color: black;
+}
+
+.input-busqueda {
+  padding: 0.5rem 1rem;
+  font-size: 1rem;
+  border: 2px solid #ccc;
+  border-radius: 4px;
+  width: 200px;
+  font-family: inherit;
+  color: #333;
+  background-color: #fff;
+}
+
+.input-busqueda::placeholder {
+  color: #999;
+}
+
+.input-busqueda:focus {
+  outline: none;
+  border-color: #007bff;
+  background-color: #fff;
+  color: #333;
+}
+
+.boton-busqueda {
+  padding: 0.5rem 2rem;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 1rem;
+  font-weight: 600;
+  transition: background-color 0.3s ease;
+}
+
+.boton-busqueda:hover {
+  background-color: #0056b3;
+}
+
+.boton-busqueda:active {
+  background-color: #003d82;
+}
