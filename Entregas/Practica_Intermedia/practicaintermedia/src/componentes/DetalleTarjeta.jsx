@@ -1,7 +1,7 @@
 import React from 'react'
 import './ListaResultados.css'
 
-export default function DetalleTarjeta({ show, onClose }) {
+export default function DetalleTarjeta({ show, onClose, onAddFavorite }) {
   if (!show) return null
 
   return (
@@ -26,6 +26,18 @@ export default function DetalleTarjeta({ show, onClose }) {
           {show.summary && (
             <div className="modal-summary" dangerouslySetInnerHTML={{ __html: show.summary }} />
           )}
+          <button
+            className="boton-AñadirLista"
+            onClick={() => {
+              if (typeof onAddFavorite === 'function') {
+                onAddFavorite(show)
+                // feedback sencillo
+                alert(`Añadido "${show.name}" a la lista de favoritos.`)
+              }
+            }}
+          >
+            Añadir a Favoritos
+          </button>
         </div>
       </div>
     </div>

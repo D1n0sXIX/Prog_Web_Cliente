@@ -1,4 +1,5 @@
 import PostCard from "@/components/PostCard"
+
 async function loadPostsSSR() {
     // 1. SSR - Server Side Rendering (sin cache)
     const res = await fetch('https://jsonplaceholder.typicode.com/posts',
@@ -23,6 +24,10 @@ async function loadPostsISR() {
 async function loadPosts() {
     const res = await fetch('https://jsonplaceholder.typicode.com/posts')
     const data = await res.json()
+
+    /* Esto fuerza a que se muestre el cargando */
+    await new Promise((resolve) => setTimeout(resolve, 3000))
+
     return data
 }
 
@@ -38,5 +43,6 @@ async function PostsPage() {
         ))
     }</div>)
 }
+
 
 export default PostsPage

@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import Navegador from './componentes/Navegador'
 import ListaResultados from './componentes/ListaResultados'
+import ListaDeFavoritos from './componentes/ListaDeFavoritos'
 import './App.css'
 
 export default function App() {
@@ -11,6 +12,20 @@ export default function App() {
   })
   const [resultados, setResultados] = useState([])
   const [cargando, setCargando] = useState(false)
+  const [favoritos, setFavoritos] = useState([])
+
+  const addFavorito = (show) => {
+    if (!show || !show.id) return
+    setFavoritos((prev) => {
+      const exists = prev.some(f => f.id === show.id)
+      if (exists) return prev
+      return [...prev, show]
+    })
+  }
+
+  const removeFavorito = (id) => {
+    setFavoritos((prev) => prev.filter(f => f.id !== id))
+  }
 
   const handleResultados = async (datos) => {
     setFiltros(datos)
@@ -85,9 +100,11 @@ export default function App() {
         </div>
       )}
       
+      <ListaDeFavoritos favoritos={favoritos} onRemove={removeFavorito} />
+      
       {cargando && <p className="cargando">Buscando...</p>}
 
-      {resultados.length > 0 && <ListaResultados resultados={resultados} />}
+      {resultados.length > 0 && <ListaResultados resultados={resultados} onAddFavorite={addFavorito} />}
     </div>
   )
 }

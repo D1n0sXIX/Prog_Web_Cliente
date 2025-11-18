@@ -3,7 +3,7 @@ import './ListaResultados.css'
 import TarjetaSerie from './TarjetaSerie'
 import DetalleTarjeta from './DetalleTarjeta'
 
-export default function ListaResultados({ resultados }) {
+export default function ListaResultados({ resultados, onAddFavorite }) {
   const [seleccionado, setSeleccionado] = useState(null)
 
   // Si no hay resultados, mostramos un mensaje
@@ -22,7 +22,11 @@ export default function ListaResultados({ resultados }) {
       </div>
 
       {seleccionado && (
-        <DetalleTarjeta show={seleccionado} onClose={() => setSeleccionado(null)} />
+        <DetalleTarjeta
+          show={seleccionado}
+          onClose={() => setSeleccionado(null)}
+          onAddFavorite={onAddFavorite}
+        />
       )}
     </div>
   )

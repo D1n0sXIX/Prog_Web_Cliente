@@ -1,55 +1,72 @@
-import { useForm } from 'react-hook-form'
+import React, { useState, useEffect, useRef } from 'react'
 import './Navegador.css'
 
 export default function Navegador({ onResultados }) {
-  const { register, handleSubmit } = useForm()
+  const [nombre, setNombre] = useState('')
+  const [genero, setGenero] = useState('')
+  const [calificacion, setCalificacion] = useState('')
 
-  const onSubmit = (data) => {
-    console.log('Datos de búsqueda:', data)
-    onResultados(data)
-  }
+  // Guardamos la referencia de onResultados en un ref para evitar
+  // que la función cambiante (por renders de App) vuelva a disparar el efecto.
+  const onResultadosRef = useRef(onResultados)
+  useEffect(() => { onResultadosRef.current = onResultados }, [onResultados])
+
+  // Llamamos a onResultados con debounce cada vez que cambian los inputs
+  useEffect(() => {
+    const handler = setTimeout(() => {
+      if (typeof onResultadosRef.current === 'function') {
+        onResultadosRef.current({ nombre, genero, calificacion })
+      }
+    }, 500) // 500ms debounce
+
+    return () => clearTimeout(handler)
+  }, [nombre, genero, calificacion])
 
   return (
     <div className="navegador">
-      <form onSubmit={handleSubmit(onSubmit)} className="formulario">
+      <form className="formulario" onSubmit={(e) => e.preventDefault()}>
 
         {/* Input por nombre */}
         <div className="div-busqueda">
-          <label htmlFor="nombre"></label>
+          <label htmlFor="nombre">Nombre</label>
           <input
             id="nombre"
             type="text"
             placeholder="Ej: Breaking Bad"
-            {...register('nombre')}
+            value={nombre}
+            onChange={(e) => setNombre(e.target.value)}
             className="input-busqueda"
           />
         </div>
 
         {/* Input por género */}
         <div className="campo-busqueda">
-          <label htmlFor="genero"></label>
+          <label htmlFor="genero">Género</label>
           <input
             id="genero"
             type="text"
             placeholder="Genero -> Ej: Drama"
-            {...register('genero')}
+            value={genero}
+            onChange={(e) => setGenero(e.target.value)}
             className="input-busqueda"
           />
         </div>
+
         {/* Input por calificación */}
         <div className="campo-busqueda">
-          <label htmlFor="calificacion"></label>
+          <label htmlFor="calificacion">Calificación mínima</label>
           <input
             id="calificacion"
             type="number"
             min="0"
-            placeholder="Calificación -> Ej: 10"
-            {...register('calificacion')}
+            placeholder="Calificación -> Ej: 8"
+            value={calificacion}
+            onChange={(e) => setCalificacion(e.target.value)}
             className="input-busqueda"
           />
         </div>
-    
-        <button type="submit" className="boton-busqueda">Buscar</button>
+
+        {/* Eliminamos el botón de búsqueda para búsqueda en vivo */}
       </form>
     </div>
   )
