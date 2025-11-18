@@ -2,12 +2,12 @@ import React, { useState, useEffect, useRef } from 'react'
 import './Navegador.css'
 
 export default function Navegador({ onResultados }) {
-  const [nombre, setNombre] = useState('')
-  const [genero, setGenero] = useState('')
-  const [calificacion, setCalificacion] = useState('')
+  const [nombre, setNombre] = useState('') // Estado para el input de nombre
+  const [genero, setGenero] = useState('') // Estado para el input de genero
+  const [calificacion, setCalificacion] = useState('') // Estado para el input de calificacion
 
-  // Guardamos la referencia de onResultados en un ref para evitar
-  // que la función cambiante (por renders de App) vuelva a disparar el efecto.
+  // Guardamos la ref de onResultados en un ref para evitar
+  // que la función cambiante (por renders de App) vuelva a disparar el efecto de cargado
   const onResultadosRef = useRef(onResultados)
   useEffect(() => { onResultadosRef.current = onResultados }, [onResultados])
 
@@ -17,7 +17,7 @@ export default function Navegador({ onResultados }) {
       if (typeof onResultadosRef.current === 'function') {
         onResultadosRef.current({ nombre, genero, calificacion })
       }
-    }, 500) // 500ms debounce
+    }, 500) // 500ms debounce --> hecho con copylot
 
     return () => clearTimeout(handler)
   }, [nombre, genero, calificacion])
@@ -39,9 +39,9 @@ export default function Navegador({ onResultados }) {
           />
         </div>
 
-        {/* Input por género */}
+        {/* Input por genero */}
         <div className="campo-busqueda">
-          <label htmlFor="genero">Género</label>
+          <label htmlFor="genero">Genero</label>
           <input
             id="genero"
             type="text"
@@ -52,21 +52,20 @@ export default function Navegador({ onResultados }) {
           />
         </div>
 
-        {/* Input por calificación */}
+        {/* Input por calificacion */}
         <div className="campo-busqueda">
-          <label htmlFor="calificacion">Calificación mínima</label>
+          <label htmlFor="calificacion">Calificacion mínima</label>
           <input
             id="calificacion"
             type="number"
             min="0"
-            placeholder="Calificación -> Ej: 8"
+            placeholder="Calificacion -> Ej: 8"
             value={calificacion}
             onChange={(e) => setCalificacion(e.target.value)}
             className="input-busqueda"
           />
         </div>
 
-        {/* Eliminamos el botón de búsqueda para búsqueda en vivo */}
       </form>
     </div>
   )

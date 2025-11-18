@@ -21,13 +21,7 @@ export default function ListaResultados({ resultados, onAddFavorite }) {
         ))}
       </div>
 
-      {seleccionado && (
-        <DetalleTarjeta
-          show={seleccionado}
-          onClose={() => setSeleccionado(null)}
-          onAddFavorite={onAddFavorite}
-        />
-      )}
+      {seleccionado && (<DetalleTarjeta show={seleccionado} onClose={() => setSeleccionado(null)} onAddFavorite={onAddFavorite}/>)}
     </div>
   )
 }

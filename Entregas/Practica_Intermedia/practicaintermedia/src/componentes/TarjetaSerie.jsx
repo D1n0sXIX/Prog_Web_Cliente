@@ -12,7 +12,7 @@ export default function TarjetaSerie({ show, onClick }) {
         <h3>{show.name}</h3>
 
         <p className="generos">
-          <strong>Géneros:</strong> {show.genres?.length ? show.genres.join(', ') : 'N/A'}
+          <strong>Generos:</strong> {show.genres?.length ? show.genres.join(', ') : 'N/A'}
         </p>
 
         <p className="rating">

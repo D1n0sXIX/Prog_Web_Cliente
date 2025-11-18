@@ -5,16 +5,16 @@ import ListaDeFavoritos from './componentes/ListaDeFavoritos'
 import './App.css'
 
 export default function App() {
-  const [filtros, setFiltros] = useState({
+  const [filtros, setFiltros] = useState({ // Inicializo los arrays de filtros
     nombre: '',
     genero: '',
     calificacion: ''
   })
-  const [resultados, setResultados] = useState([])
-  const [cargando, setCargando] = useState(false)
-  const [favoritos, setFavoritos] = useState([])
+  const [resultados, setResultados] = useState([]) // Inicializo el array de resultados
+  const [cargando, setCargando] = useState(false) // Estado de carga
+  const [favoritos, setFavoritos] = useState([])  // Inicializo el array de favoritos
 
-  const addFavorito = (show) => {
+  const addFavorito = (show) => { // Añade una peli/serie al array de favoritos
     if (!show || !show.id) return
     setFavoritos((prev) => {
       const exists = prev.some(f => f.id === show.id)
@@ -23,25 +23,25 @@ export default function App() {
     })
   }
 
-  const removeFavorito = (id) => {
+  const removeFavorito = (id) => { // Elimina una peli/serie del array de favoritos
     setFavoritos((prev) => prev.filter(f => f.id !== id))
   }
 
-  const handleResultados = async (datos) => {
+  const handleResultados = async (datos) => { // Función que controla los resultados que se muestran al buscar
     setFiltros(datos)
-    console.log('App recibimos:', datos)
+    console.log('App recibimos:', datos) // debugging
 
-    // Si no hay ningun filtro, no se buscan
+    // Si no hay ningun filtro, no se busca
     if (!datos.nombre && !datos.genero && !datos.calificacion) {
       setResultados([])
       return
     }
 
-    // Mostrar que estamos cargando
+    // Mostrar que estamos cargando -> un extra que tenia cuando usaba el boton pero queda bien
     setCargando(true)
     setResultados([])
 
-    try {
+    try { // Intentamos buscar en la API
       let resultadosFiltrados = []
 
       // Si tenemos nombre, buscamos por nombre en la API
@@ -78,7 +78,7 @@ export default function App() {
       }
 
       setResultados(resultadosFiltrados)
-    } catch (error) {
+    } catch (error) { // Manejo de errores
       console.error('Error al buscar:', error)
       setResultados([])
     } finally {
@@ -90,15 +90,6 @@ export default function App() {
     <div className="MainDiv">
       <h1>Buscador de Series y Películas</h1>
       <Navegador onResultados={handleResultados} />
-      
-      {(filtros.nombre || filtros.genero || filtros.calificacion) && (
-        <div className="resumen-busqueda">
-          <h2>Datos introducidos para la busqueda :</h2>
-          {filtros.nombre && <p><strong>Nombre: </strong> {filtros.nombre}</p>}
-          {filtros.genero && <p><strong>Genero: </strong> {filtros.genero}</p>}
-          {filtros.calificacion && <p><strong>Calificación minima: </strong> {filtros.calificacion}</p>}
-        </div>
-      )}
       
       <ListaDeFavoritos favoritos={favoritos} onRemove={removeFavorito} />
       
