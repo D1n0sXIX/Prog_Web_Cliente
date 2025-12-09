@@ -1,0 +1,338 @@
+@import "tailwindcss";
+
+/* ============================================
+   🎨 SPOTIFY TASTE MIXER - THEME
+   Paleta: Negro + Verde + Rojo
+   ============================================ */
+
+:root {
+  /* Colores principales - Verde Spotify */
+  --primary: #1db954;
+  --primary-light: #1ed760;
+  --primary-dark: #169c46;
+  
+  /* Acento - Rojo vibrante */
+  --accent: #e63946;
+  --accent-light: #ff4d5a;
+  --accent-dark: #c5303c;
+  
+  /* Fondos - Negro puro */
+  --bg-dark: #000000;
+  --bg-card: #121212;
+  --bg-hover: #1a1a1a;
+  --bg-input: #0a0a0a;
+  --bg-surface: #181818;
+  
+  /* Textos */
+  --text-primary: #ffffff;
+  --text-secondary: #b3b3b3;
+  --text-muted: #6a6a6a;
+  
+  /* Bordes */
+  --border: #282828;
+  --border-light: #3e3e3e;
+  
+  /* Gradientes */
+  --gradient-primary: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+  --gradient-accent: linear-gradient(135deg, var(--accent) 0%, var(--accent-dark) 100%);
+  --gradient-card: linear-gradient(180deg, #1a1a1a 0%, #121212 100%);
+}
+
+/* ============================================
+   📦 ESTILOS BASE
+   ============================================ */
+body {
+  background-color: var(--bg-dark);
+  color: var(--text-primary);
+  font-family: 'Inter', system-ui, sans-serif;
+}
+
+/* ============================================
+   🧩 COMPONENTES REUTILIZABLES
+   ============================================ */
+
+/* Botones */
+.btn-primary {
+  background-color: var(--primary);
+  color: white;
+  font-weight: 600;
+  padding: 0.75rem 1.5rem;
+  border-radius: 0.5rem;
+  transition: all 0.2s;
+}
+
+.btn-primary:hover {
+  background-color: var(--primary-light);
+  transform: scale(1.05);
+}
+
+.btn-accent {
+  background-color: var(--accent);
+  color: white;
+  font-weight: 600;
+  padding: 0.75rem 1.5rem;
+  border-radius: 0.5rem;
+  transition: all 0.2s;
+}
+
+.btn-accent:hover {
+  background-color: var(--accent-light);
+  transform: scale(1.05);
+}
+
+.btn-outline {
+  border: 2px solid var(--primary);
+  color: var(--primary);
+  font-weight: 600;
+  padding: 0.75rem 1.5rem;
+  border-radius: 0.5rem;
+  transition: all 0.2s;
+  background: transparent;
+}
+
+.btn-outline:hover {
+  background-color: var(--primary);
+  color: white;
+}
+
+/* Tarjetas */
+.card {
+  background-color: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 0.75rem;
+  padding: 1.5rem;
+  transition: all 0.2s;
+}
+
+.card:hover {
+  border-color: var(--border-light);
+}
+
+.card-hover {
+  background-color: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 0.75rem;
+  padding: 1.5rem;
+  transition: all 0.2s;
+  cursor: pointer;
+}
+
+.card-hover:hover {
+  background-color: var(--bg-hover);
+  transform: scale(1.02);
+}
+
+/* Inputs */
+.input {
+  width: 100%;
+  background-color: var(--bg-input);
+  border: 1px solid var(--border);
+  border-radius: 0.5rem;
+  padding: 0.75rem 1rem;
+  color: var(--text-primary);
+  transition: all 0.2s;
+}
+
+.input::placeholder {
+  color: var(--text-muted);
+}
+
+.input:focus {
+  outline: none;
+  border-color: var(--primary);
+  box-shadow: 0 0 0 1px var(--primary);
+}
+
+/* Badges */
+.badge-primary {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem;
+  padding: 0.25rem 0.75rem;
+  border-radius: 9999px;
+  font-size: 0.875rem;
+  font-weight: 500;
+  background-color: rgba(29, 185, 84, 0.2);
+  color: var(--primary-light);
+  border: 1px solid rgba(29, 185, 84, 0.3);
+}
+
+.badge-accent {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem;
+  padding: 0.25rem 0.75rem;
+  border-radius: 9999px;
+  font-size: 0.875rem;
+  font-weight: 500;
+  background-color: rgba(230, 57, 70, 0.2);
+  color: var(--accent-light);
+  border: 1px solid rgba(230, 57, 70, 0.3);
+}
+
+/* Widget */
+.widget {
+  background-color: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 0.75rem;
+  padding: 1.5rem;
+}
+
+.widget-title {
+  font-size: 1.125rem;
+  font-weight: 600;
+  margin-bottom: 1rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: var(--text-primary);
+}
+
+/* Track Items */
+.track-item {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.75rem;
+  border-radius: 0.5rem;
+  cursor: pointer;
+  transition: all 0.2s;
+  border: 1px solid transparent;
+}
+
+.track-item:hover {
+  background-color: var(--bg-hover);
+}
+
+.track-item-selected {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.75rem;
+  border-radius: 0.5rem;
+  cursor: pointer;
+  background-color: rgba(29, 185, 84, 0.15);
+  border: 1px solid var(--primary);
+}
+
+/* Sliders */
+input[type="range"] {
+  width: 100%;
+  height: 0.5rem;
+  background-color: var(--bg-input);
+  border-radius: 0.5rem;
+  appearance: none;
+  cursor: pointer;
+}
+
+input[type="range"]::-webkit-slider-thumb {
+  appearance: none;
+  width: 1.25rem;
+  height: 1.25rem;
+  background-color: var(--primary);
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+input[type="range"]::-webkit-slider-thumb:hover {
+  background-color: var(--primary-light);
+}
+
+/* Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--bg-dark);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--border);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--border-light);
+}
+
+/* ============================================
+   🎭 ANIMACIONES
+   ============================================ */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes pulse-glow {
+  0%, 100% { box-shadow: 0 0 5px var(--primary); }
+  50% { box-shadow: 0 0 20px var(--primary); }
+}
+
+.animate-fade-in {
+  animation: fadeIn 0.3s ease-out;
+}
+
+/* ============================================
+   📱 UTILIDADES
+   ============================================ */
+.text-primary-color { color: var(--primary); }
+.text-accent-color { color: var(--accent); }
+.text-muted { color: var(--text-muted); }
+.text-secondary { color: var(--text-secondary); }
+
+.bg-primary-color { background-color: var(--primary); }
+.bg-accent-color { background-color: var(--accent); }
+
+/* Efectos de brillo */
+.glow-primary {
+  box-shadow: 0 0 20px rgba(29, 185, 84, 0.3);
+}
+
+.glow-accent {
+  box-shadow: 0 0 20px rgba(230, 57, 70, 0.3);
+}
+
+/* Botón con gradiente */
+.btn-gradient {
+  background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
+  color: white;
+  font-weight: 600;
+  padding: 0.75rem 1.5rem;
+  border-radius: 0.5rem;
+  transition: all 0.3s;
+  border: none;
+}
+
+.btn-gradient:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 25px rgba(29, 185, 84, 0.4);
+}
+
+/* Separador con gradiente */
+.divider-gradient {
+  height: 2px;
+  background: linear-gradient(90deg, transparent, var(--primary), var(--accent), transparent);
+  border: none;
+}
+
+/* Título con gradiente */
+.text-gradient {
+  background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Hover con borde brillante */
+.hover-glow:hover {
+  border-color: var(--primary);
+  box-shadow: 0 0 15px rgba(29, 185, 84, 0.2);
+}
+.bg-card { background-color: var(--bg-card); }
+.bg-dark { background-color: var(--bg-dark); }
+.bg-hover { background-color: var(--bg-hover); }
+
+.border-primary-color { border-color: var(--primary); }
+.border-accent-color { border-color: var(--accent); }
