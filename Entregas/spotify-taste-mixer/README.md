@@ -49,12 +49,6 @@ Aplicación web que genera playlists personalizadas de Spotify basándose en las
 
 ---
 
-## 🚀 Demo
-
-**URL de producción**: [tu-proyecto.vercel.app](https://tu-proyecto.vercel.app) *(actualizar después del deploy)*
-
----
-
 ## 📦 Instalación
 
 ### Requisitos Previos
@@ -312,35 +306,6 @@ Página `/dashboard/guardar`:
 
 ---
 
-## 🌐 Despliegue en Vercel
-
-### 1. Subir a GitHub
-
-```bash
-git add .
-git commit -m "Spotify Taste Mixer - Proyecto Final"
-git push origin main
-```
-
-### 2. Configurar en Vercel
-
-1. Importar repositorio en [Vercel](https://vercel.com/new)
-2. **Root Directory**: `Entregas/spotify-taste-mixer`
-3. **Environment Variables**:
-   - `SPOTIFY_CLIENT_ID`
-   - `SPOTIFY_CLIENT_SECRET`
-   - `NEXT_PUBLIC_SPOTIFY_CLIENT_ID`
-   - `NEXT_PUBLIC_REDIRECT_URI` → `https://tu-proyecto.vercel.app/auth/callback`
-
-### 3. Actualizar Spotify Dashboard
-
-Añadir Redirect URI de producción:
-```
-https://tu-proyecto.vercel.app/auth/callback
-```
-
----
-
 ## 🔒 Seguridad
 
 - ✅ `SPOTIFY_CLIENT_SECRET` solo en servidor (API Routes)
@@ -366,7 +331,7 @@ https://tu-proyecto.vercel.app/auth/callback
 
 ## 👨‍💻 Autor
 
-**Alejandro** - [GitHub](https://github.com/D1n0sXIX)
+**Alejandro Mamán** - [GitHub](https://github.com/D1n0sXIX)
 
 Proyecto Final - Programación Web Cliente  
 Universidad - Tercer Año - 1er Cuatrimestre
