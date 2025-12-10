@@ -1,11 +1,8 @@
 'use client'
 
 /**
- * ============================================
- * 📅 DECADE WIDGET
- * ============================================
- * 
- * Según el README del profesor:
+ * DECADE WIDGET
+ * Según el README:
  * - Recibe props: onSelect, selectedDecades
  * - Emite cambios al componente padre (Dashboard)
  * - Selector de décadas (1950s, 1960s... 2020s)
@@ -24,34 +21,32 @@ const DECADES = [
 ]
 
 export default function DecadeWidget({ selectedDecades = [], onSelect }) {
-  /**
-   * Toggle selección de década
+  /* Toggle selección de década
    * Comunica el cambio al padre mediante onSelect
    */
   const toggleDecade = (decade) => {
-    const exists = selectedDecades.find(d => d.label === decade.label)
-    if (exists) {
+    const exists = selectedDecades.find(d => d.label === decade.label) // ¿Ya está seleccionada?
+    if (exists) { // Si ya está, quitarla
       onSelect(selectedDecades.filter(d => d.label !== decade.label))
-    } else {
+    } else { // Si no está, añadirla
       onSelect([...selectedDecades, decade])
     }
   }
 
   return (
     <div className="card p-4">
-      <h3 className="text-lg font-semibold mb-3">📅 Décadas</h3>
+      <h3 className="text-lg font-semibold mb-3">Décadas</h3>
 
       <div className="grid grid-cols-2 gap-2">
-        {DECADES.map(decade => (
+        {DECADES.map(decade => ( // Mapeo de botones de décadas
           <button
             key={decade.label}
             onClick={() => toggleDecade(decade)}
             className="px-3 py-2 rounded text-sm transition-colors"
             style={selectedDecades.find(d => d.label === decade.label)
-              ? { backgroundColor: 'var(--primary)', color: 'white' }
-              : { backgroundColor: 'var(--bg-hover)', color: 'var(--text-secondary)' }
-            }
-          >
+              ? { backgroundColor: 'var(--primary)', color: 'white' } // Seleccionada
+              : { backgroundColor: 'var(--bg-hover)', color: 'var(--text-secondary)' } // No seleccionada
+}>
             {decade.label}
           </button>
         ))}
@@ -59,7 +54,7 @@ export default function DecadeWidget({ selectedDecades = [], onSelect }) {
 
       {selectedDecades.length > 0 && (
         <p className="text-xs mt-3" style={{ color: 'var(--text-muted)' }}>
-          Seleccionadas: {selectedDecades.map(d => d.label).join(', ')}
+          Seleccionadas: {selectedDecades.map(d => d.label).join(', ')} {/* Lista de décadas seleccionadas */}
         </p>
       )}
     </div>

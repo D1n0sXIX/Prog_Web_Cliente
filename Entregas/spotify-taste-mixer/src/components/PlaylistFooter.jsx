@@ -1,11 +1,8 @@
 'use client'
 
 /**
- * ============================================
- * 🎵 PLAYLIST FOOTER
- * ============================================
- * 
- * Footer fijo que muestra la playlist actual.
+ * PLAYLIST FOOTER
+ * Footer fijo que muestra la playlist actual
  * Usa usePlaylist() para acceder al Context y obtener:
  *   - playlist: array de tracks
  *   - removeTrack: función para eliminar un track
@@ -45,7 +42,7 @@ export default function PlaylistFooter() {
         onClick={() => setIsExpanded(!isExpanded)}
       >
         <div className="flex items-center gap-4">
-          <h2 className="text-lg font-bold text-gradient">🎵 Tu Playlist</h2>
+          <h2 className="text-lg font-bold text-gradient">Tu Playlist</h2>
           <span className="badge-primary">
             {playlist.length} canciones
           </span>
@@ -62,7 +59,7 @@ export default function PlaylistFooter() {
                 }}
                 className="btn-primary px-4 py-2 rounded-full text-sm"
               >
-                💾 Guardar en Spotify
+                Guardar en Spotify
               </button>
 
               {/* Botón Limpiar */}
@@ -73,7 +70,7 @@ export default function PlaylistFooter() {
                 }}
                 className="btn-accent px-4 py-2 rounded-full text-sm"
               >
-                🗑️ Limpiar
+                Limpiar
               </button>
             </>
           )}
@@ -93,9 +90,7 @@ export default function PlaylistFooter() {
         <hr className="divider-gradient mb-4" />
         
         {playlist.length === 0 ? (
-          <div className="text-center py-8" style={{ color: 'var(--text-muted)' }}>
-            <p className="text-3xl mb-2">🎵</p>
-            <p>Añade canciones desde los widgets de artistas o canciones</p>
+          <div className="text-center py-8" style={{ color: 'var(--text-muted)' }}>            <p>Añade canciones desde los widgets de artistas o canciones</p>
           </div>
         ) : (
           <div className="space-y-2 max-h-48 overflow-y-auto">

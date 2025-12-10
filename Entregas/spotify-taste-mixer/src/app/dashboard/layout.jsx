@@ -1,20 +1,16 @@
 'use client'
 
 /**
- * ============================================
- * 🎵 DASHBOARD LAYOUT
- * ============================================
  * 
- * Este layout envuelve todas las páginas del dashboard.
+ * 🎵 DASHBOARD LAYOUT
  * Incluye:
  *   - Header (navegación superior)
- *   - PlaylistProvider (Context para compartir la playlist)
- *   - PlaylistFooter (footer fijo con la playlist)
- * 
- * Gracias al PlaylistProvider, cualquier página hija puede:
- *   - Leer la playlist actual
- *   - Añadir tracks con addTrack()
- *   - Eliminar tracks con removeTrack()
+ *   - PlaylistProvider (Context para compartir la playlist), permite:
+ *        - Leer la playlist actual
+ *        - Añadir tracks con addTrack()
+ *        - Eliminar tracks con removeTrack()
+ *  - Main (área principal para las páginas hijas)
+ *  - PlaylistFooter (footer fijo con la playlist)
  */
 
 import { useState, useEffect } from 'react'
@@ -24,9 +20,9 @@ import PlaylistFooter from '@/components/PlaylistFooter'
 import { PlaylistProvider } from '@/context/PlaylistContext'
 
 export default function DashboardLayout({ children }) {
-  const router = useRouter()
-  const [user, setUser] = useState(null)
-  const [loading, setLoading] = useState(true)
+  const router = useRouter() // Navegación programática
+  const [user, setUser] = useState(null) // Estado del usuario autenticado
+  const [loading, setLoading] = useState(true) // Estado de carga del usuario
 
   // Verificar autenticación y cargar usuario
   useEffect(() => {
@@ -71,7 +67,7 @@ export default function DashboardLayout({ children }) {
       <div className="min-h-screen bg-dark flex flex-col">
         <Header user={user} />
         
-        {/* Contenido principal - con padding para el footer */}
+        {/* Contenido principal*/}
         <main className="flex-1 container mx-auto px-4 py-8 pt-20 pb-80">
           {children}
         </main>

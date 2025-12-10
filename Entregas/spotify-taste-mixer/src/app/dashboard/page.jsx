@@ -1,10 +1,6 @@
 'use client'
 /**
- * ============================================
- * 🏠 DASHBOARD PRINCIPAL
- * ============================================
- * 
- * Según el README del profesor:
+ * DASHBOARD PRINCIPAL
  * - El Dashboard maneja el estado de TODOS los widgets
  * - Cada widget recibe props: onSelect, selectedItems
  * - Los widgets emiten cambios al Dashboard (componente padre)
@@ -27,7 +23,7 @@ export default function Dashboard() {
   // El Dashboard es el "padre" que controla todo
   // ============================================
   
-  // Obtener funciones del Context para manejar la playlist del footer
+  // Por eso debe obtener funciones del Context para manejar la playlist del footer
   // Y también el estado compartido de artistas/tracks para las páginas expandidas
   const { 
     playlist, 
@@ -45,13 +41,8 @@ export default function Dashboard() {
   // Estado de carga
   const [loading, setLoading] = useState(false)
   
-  // ============================================
-  // FUNCIONES DE GESTIÓN DE PLAYLIST
-  // ============================================
-
-  /**
+  /*
    * Genera una playlist basada en las selecciones de los widgets
-   * Estrategia según el README (endpoint /recommendations deprecado):
    * 1. Obtener top tracks de artistas seleccionados
    * 2. Buscar tracks por género
    * 3. Filtrar por década, popularidad, etc.
@@ -62,7 +53,7 @@ export default function Dashboard() {
 
     try {
       // 1. Obtener tracks de los artistas seleccionados
-      for (const artist of selectedArtists) {
+      for (const artist of selectedArtists) { // Para cada artista
         const artistTracks = await getArtistTopTracks(artist.id)
         tracks.push(...artistTracks)
       }
@@ -70,18 +61,18 @@ export default function Dashboard() {
       // 2. Añadir tracks seleccionados directamente
       tracks.push(...selectedTracks)
 
-      // 3. Buscar tracks por género
+      // 3. Buscar tracks por genero
       for (const genre of selectedGenres) {
         const genreTracks = await searchTracks(`genre:${genre}`, 10)
         tracks.push(...genreTracks)
       }
 
-      // 4. Filtrar por década (año de lanzamiento)
-      if (selectedDecades.length > 0) {
+      // 4. Filtrar por decada (año de lanzamiento)
+      if (selectedDecades.length > 0) { // Si hay décadas seleccionadas
         tracks = tracks.filter(track => {
           const year = new Date(track.album?.release_date).getFullYear()
-          return selectedDecades.some(decade => 
-            year >= decade.start && year <= decade.end
+          return selectedDecades.some(decade => // Comprobar si el año está en alguna de las décadas seleccionadas
+            year >= decade.start && year <= decade.end // Ejemplo: 1990-1999
           )
         })
       }
@@ -108,7 +99,6 @@ export default function Dashboard() {
 
   return (
     <div className="pb-32"> {/* Espacio para el área de playlist */}
-      {/* Título de bienvenida */}
       <div className="mb-8">
         <h1 className="text-3xl font-bold text-gradient">
           Spotify Taste Mixer
@@ -119,16 +109,14 @@ export default function Dashboard() {
       </div>
 
       {/* Grid de Widgets - Cada uno recibe props del padre */}
-      {/* Primera fila: Artistas y Canciones (más importantes) */}
+      {/* Primera fila: Artistas y Canciones */}
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
-        
-        {/* Widget de Artistas */}
+        {/* Widget de Artistas*/}
         <ArtistWidget 
           selectedArtists={selectedArtists}
           onSelect={setSelectedArtists}
         />
-
-        {/* Widget de Canciones/Tracks */}
+        {/* Widget de Canciones/Tracks -> seleccionar canciones directamente */}
         <TrackWidget 
           selectedTracks={selectedTracks}
           onSelect={setSelectedTracks}
@@ -138,13 +126,13 @@ export default function Dashboard() {
       {/* Segunda fila: Filtros (Décadas, Géneros, Popularidad) */}
       <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
         
-        {/* Widget de Décadas */}
+        {/* Widget de Decadas */}
         <DecadeWidget 
           selectedDecades={selectedDecades}
           onSelect={setSelectedDecades}
         />
 
-        {/* Widget de Géneros */}
+        {/* Widget de Generos */}
         <GenreWidget 
           selectedGenres={selectedGenres}
           onSelect={setSelectedGenres}
@@ -162,14 +150,14 @@ export default function Dashboard() {
         <FavoritosWidget />
       </div>
 
-      {/* Botón para generar playlist */}
+      {/* Boton para generar playlist */}
       <div className="flex justify-center mb-8">
         <button
-          onClick={generatePlaylist}
-          disabled={loading || (selectedArtists.length === 0 && selectedTracks.length === 0 && selectedGenres.length === 0)}
+          onClick={generatePlaylist} // Generar playlist al hacer clic
+          disabled={loading || (selectedArtists.length === 0 && selectedTracks.length === 0 && selectedGenres.length === 0)} // Deshabilitar si está cargando o no hay selecciones
           className="btn-primary px-8 py-4 text-lg rounded-full disabled:opacity-50 disabled:cursor-not-allowed"
         >
-          {loading ? '⏳ Generando...' : '🎵 Generar Playlist'}
+          {loading ? '⏳ Generando...' : 'Generar Playlist'}
         </button>
       </div>
 

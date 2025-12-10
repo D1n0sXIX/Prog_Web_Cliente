@@ -1,11 +1,8 @@
 'use client'
 
 /**
- * ============================================
- * 🎤 ARTIST WIDGET
- * ============================================
- * 
- * Según el README del profesor:
+ * ARTIST WIDGET * 
+ * Según el README:
  * - Recibe props: onSelect, selectedArtists
  * - Emite cambios al componente padre (Dashboard)
  * - Búsqueda con debouncing
@@ -28,7 +25,7 @@ export default function ArtistWidget({ selectedArtists = [], onSelect }) {
       return
     }
 
-    const timeoutId = setTimeout(async () => {
+    const timeoutId = setTimeout(async () => { // Debouncing
       setLoading(true)
       try {
         const artists = await searchArtists(query, 5)
@@ -44,10 +41,7 @@ export default function ArtistWidget({ selectedArtists = [], onSelect }) {
     return () => clearTimeout(timeoutId)
   }, [query])
 
-  /**
-   * Toggle selección de artista
-   * Comunica el cambio al padre mediante onSelect
-   */
+  // Comunica el cambio al padre mediante onSelect
   const toggleArtist = (artist) => {
     const exists = selectedArtists.find(a => a.id === artist.id)
     if (exists) {
@@ -62,9 +56,8 @@ export default function ArtistWidget({ selectedArtists = [], onSelect }) {
   return (
     <div className="card p-4">
       <div className="flex justify-between items-center mb-3">
-        <h3 className="text-lg font-semibold">🎤 Artistas</h3>
-        <Link 
-          href="/dashboard/artistas" 
+        <h3 className="text-lg font-semibold">Artistas</h3>
+        <Link href="/dashboard/artistas" 
           className="text-xs hover:underline"
           style={{ color: 'var(--primary)' }}
         >
@@ -72,15 +65,14 @@ export default function ArtistWidget({ selectedArtists = [], onSelect }) {
         </Link>
       </div>
 
-      <input
-        type="text"
+      <input type="text"
         placeholder="Buscar artistas..."
         value={query}
         onChange={(e) => setQuery(e.target.value)}
         className="input mb-3"
       />
 
-      {loading && (
+      {loading && ( // Indicador de carga
         <p className="text-sm" style={{ color: 'var(--text-muted)' }}>Buscando...</p>
       )}
 

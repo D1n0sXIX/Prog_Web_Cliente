@@ -1,11 +1,8 @@
 'use client'
 
 /**
- * ============================================
- * 🎸 GENRE WIDGET
- * ============================================
- * 
- * Según el README del profesor:
+ * GENRE WIDGET
+ * Según el README:
  * - Recibe props: onSelect, selectedGenres
  * - Emite cambios al componente padre (Dashboard)
  * - Lista de géneros hardcodeada (endpoint deprecated)
@@ -15,7 +12,7 @@
 
 import { useState } from 'react'
 
-// Géneros disponibles según el README del profesor
+// Géneros disponibles según el README
 const AVAILABLE_GENRES = [
   'acoustic', 'afrobeat', 'alt-rock', 'alternative', 'ambient',
   'anime', 'black-metal', 'bluegrass', 'blues', 'bossanova',
@@ -43,32 +40,30 @@ const AVAILABLE_GENRES = [
   'swedish', 'synth-pop', 'tango', 'techno', 'trance',
   'trip-hop', 'turkish', 'work-out', 'world-music'
 ]
-
+ // Componente GenreWidget
 export default function GenreWidget({ selectedGenres = [], onSelect }) {
   const [filter, setFilter] = useState('')
-
+  // Filtrar géneros según el input de búsqueda
   const filteredGenres = AVAILABLE_GENRES.filter(genre =>
     genre.toLowerCase().includes(filter.toLowerCase())
   )
 
-  /**
-   * Toggle selección de género
+  /* Toggle selección de género
    * Comunica el cambio al padre mediante onSelect
    */
   const toggleGenre = (genre) => {
-    if (selectedGenres.includes(genre)) {
-      onSelect(selectedGenres.filter(g => g !== genre))
-    } else if (selectedGenres.length < 5) {
-      onSelect([...selectedGenres, genre])
+    if (selectedGenres.includes(genre)) { // Si ya está, quitarlo
+      onSelect(selectedGenres.filter(g => g !== genre)) // Quitar género
+    } else if (selectedGenres.length < 5) { // Si no está y hay espacio, añadirlo
+      onSelect([...selectedGenres, genre]) // Añadir género
     }
   }
 
   return (
     <div className="card p-4">
-      <h3 className="text-lg font-semibold mb-3">🎸 Géneros</h3>
+      <h3 className="text-lg font-semibold mb-3">Géneros</h3>
 
-      <input
-        type="text"
+      <input type="text"
         placeholder="Filtrar géneros..."
         value={filter}
         onChange={(e) => setFilter(e.target.value)}
@@ -76,16 +71,14 @@ export default function GenreWidget({ selectedGenres = [], onSelect }) {
       />
 
       <div className="flex flex-wrap gap-2 max-h-40 overflow-y-auto">
-        {filteredGenres.map(genre => (
-          <button
-            key={genre}
-            onClick={() => toggleGenre(genre)}
+        {filteredGenres.map(genre => ( // Mapeo de botones de géneros
+          <button key={genre} onClick={() => toggleGenre(genre)}
             className={`text-xs px-2 py-1 rounded-full transition-colors ${
-              selectedGenres.includes(genre) ? '' : 'hover:opacity-80'
+              selectedGenres.includes(genre) ? '' : 'hover:opacity-80' // Efecto hover solo si no está seleccionado
             }`}
             style={selectedGenres.includes(genre) 
-              ? { backgroundColor: 'var(--primary)', color: 'white' }
-              : { backgroundColor: 'var(--bg-hover)', color: 'var(--text-secondary)' }
+              ? { backgroundColor: 'var(--primary)', color: 'white' } // Seleccionado
+              : { backgroundColor: 'var(--bg-hover)', color: 'var(--text-secondary)' } // No seleccionado
             }
           >
             {genre}

@@ -1,9 +1,7 @@
 'use client'
 
 /**
- * ============================================
- * 🎵 PÁGINA EXPANDIDA DE CANCIONES
- * ============================================
+ * PÁGINA EXPANDIDA DE CANCIONES
  * 
  * Versión avanzada del TrackWidget.
  * - Más espacio para búsqueda
@@ -22,7 +20,10 @@ export default function CancionesPage() {
   const [loading, setLoading] = useState(false)
 
   // Obtener el estado compartido del Context
-  const { selectedTracks, setSelectedTracks, addTrack, toggleFavorite, isFavorite } = usePlaylist()
+  const { selectedTracks, setSelectedTracks, addTrack, removeTrack, playlist, toggleFavorite, isFavorite } = usePlaylist()
+
+  // Verificar si una canción está en la playlist
+  const isInPlaylist = (trackId) => playlist.some(t => t.id === trackId)
 
   // Buscar canciones cuando cambia el query (con debounce)
   useEffect(() => {
@@ -47,9 +48,7 @@ export default function CancionesPage() {
     return () => clearTimeout(timeoutId)
   }, [query])
 
-  /**
-   * Toggle selección de track
-   */
+  //Toggle selección de trac
   const toggleTrack = (track) => {
     const exists = selectedTracks.find(t => t.id === track.id)
     if (exists) {
@@ -59,7 +58,7 @@ export default function CancionesPage() {
     }
   }
 
-  // Formatear duración de ms a mm:ss
+  // Formatear duración de ms a mm:ss --> Copilot
   const formatDuration = (ms) => {
     const minutes = Math.floor(ms / 60000)
     const seconds = Math.floor((ms % 60000) / 1000)
@@ -77,7 +76,7 @@ export default function CancionesPage() {
         </Link>
         <h1 className="text-3xl font-bold text-gradient">Selección de Canciones avanzadas</h1>
         <p className="mt-2" style={{ color: 'var(--text-secondary)' }}>
-          Busca y selecciona canciones específicas para tu playlist
+          Busca y selecciona canciones de forma ampliada para tu playlist
         </p>
       </div>
 
@@ -108,26 +107,22 @@ export default function CancionesPage() {
 
       {/* Barra de búsqueda */}
       <div className="relative mb-6">
-        <input
-          type="text"
-          value={query}
-          onChange={(e) => setQuery(e.target.value)}
+        <input type="text" value={query} onChange={(e) => setQuery(e.target.value)}
           placeholder="Buscar canciones..."
           className="input text-lg py-4"
           autoFocus
         />
-        {loading && (
+        {loading && ( // Indicador de carga -> Copilot
           <div className="absolute right-4 top-1/2 -translate-y-1/2">
             <div className="animate-spin rounded-full h-5 w-5 border-t-2 border-b-2" style={{ borderColor: 'var(--primary)' }}></div>
           </div>
         )}
       </div>
 
-      {/* Resultados de búsqueda */}
+      {/* Resultados de busqueda */}
       <div className="space-y-3">
         {results.map((track) => (
-          <div
-            key={track.id}
+          <div key={track.id} // Cada track
             className={`card p-4 transition-all ${isSelected(track.id) ? 'ring-2 ring-green-500' : ''}`}
           >
             <div className="flex items-center gap-4">
@@ -159,7 +154,7 @@ export default function CancionesPage() {
                 <p className="font-semibold" style={{ color: 'var(--primary)' }}>{track.popularity}%</p>
               </div>
 
-              {/* Botones de acción */}
+              {/* Botones de accion */}
               <div className="flex gap-2">
                 <button
                   onClick={() => toggleFavorite(track)}
@@ -173,25 +168,17 @@ export default function CancionesPage() {
                   {isFavorite(track.id) ? '⭐' : '☆'}
                 </button>
                 
-                <button 
-                  onClick={() => toggleTrack(track)}
-                  className={`px-4 py-2 text-sm rounded transition-colors ${
-                    isSelected(track.id) 
-                      ? 'bg-green-600 text-white' 
-                      : 'btn-primary'
-                  }`}
-                >
-                  {isSelected(track.id) ? '✓' : 'Seleccionar'}
-                </button>
-                
-                <button
-                  onClick={() => addTrack(track)}
-                  className="px-4 py-2 text-sm rounded"
-                  style={{ backgroundColor: 'var(--bg-hover)', color: 'var(--text-primary)' }}
-                  title="Añadir directamente a la playlist"
-                >
-                  + Playlist
-                </button>
+                {isInPlaylist(track.id) ? (
+                  <button onClick={() => removeTrack(track.id)}
+                    className="px-4 py-2 text-sm rounded transition-colors bg-red-600 hover:bg-red-700 text-white">
+                    Eliminar
+                  </button>
+                ) : (
+                  <button  onClick={() => addTrack(track)}
+                    className="btn-primary px-4 py-2 text-sm rounded transition-colors">
+                    Seleccionar
+                  </button>
+                )}
               </div>
             </div>
           </div>
@@ -199,7 +186,7 @@ export default function CancionesPage() {
       </div>
 
       {/* Estado inicial */}
-      {!query && results.length === 0 && (
+      {!query && results.length === 0 && ( // Si no hay búsqueda y no hay resultados
         <div className="text-center py-16" style={{ color: 'var(--text-muted)' }}>
           <p className="text-lg">Escribe el nombre de una canción para buscarla</p>
         </div>
